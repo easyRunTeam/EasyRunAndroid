@@ -97,8 +97,8 @@ public class LoginActivity extends Activity{
                     // 创建子线程，进行Post传输
                     new Thread() {
                         public void run() {
-                            String username = account.getText().toString();
-                            String passwd = password.getText().toString();
+                            String username = account.getText().toString();//账号
+                            String passwd = password.getText().toString();//密码
                             final String path= ServerData.BaseURL+"LoginServer";
                             if (username.equals("")||passwd.equals("")) {
                                 handler.sendEmptyMessage(SEND_NULL);
@@ -110,6 +110,11 @@ public class LoginActivity extends Activity{
                                     String result = new SendDateToServer(handler).doPost(map,path);
                                     if(result.equals("succeed")){
                                         Intent intent = new Intent();
+                                        Bundle bundle = new Bundle();
+                                        //传递登录成功的账号密码
+                                        bundle.putString("account",username);
+                                        bundle.putString("password",passwd);
+                                        intent.putExtras(bundle);
                                         intent.setClass(LoginActivity.this, MainActivity.class);
                                         startActivity(intent);
                                         finish();

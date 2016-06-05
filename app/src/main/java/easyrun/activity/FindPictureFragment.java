@@ -26,6 +26,11 @@ public class FindPictureFragment extends Fragment {
         getActivity().getActionBar().hide();
         mMainView = inflater.inflate(R.layout.find_picture, container, false);
         ListView picList = (ListView)mMainView.findViewById(R.id.picListView);
+
+        //获取传递来的用户信息
+        Bundle bundle = getArguments();
+        bundle.getParcelable("userInfo");
+
         init();//初始化照片列表
         final PictureListAdapter adapter = new PictureListAdapter(mMainView.getContext(), pictureList);
 
@@ -52,6 +57,8 @@ public class FindPictureFragment extends Fragment {
             pictureList.add(freePic);
             i++;
         }
+        //从服务器获取照片流跟相关数据
+
     }
 
     @Override

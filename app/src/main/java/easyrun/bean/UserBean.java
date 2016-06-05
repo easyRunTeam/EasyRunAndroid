@@ -1,33 +1,76 @@
 package easyrun.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.sql.Date;
 
-public class UserBean
-{
+public class UserBean implements Parcelable {
+
 	public static enum Gender
 	{
 		male,female;
 	}
-	private String userID = "";
-	private String headImgUrl =""; 	// �û�ͷ������
-	private String userName = "";	//�ǳ�
-	private String account = "";	//�û���
-	private String password = "";	//����
-	private String realName = "";	//��ʵ����
+	private String userID = "";		//主键
+	private String headImgUrl =""; 	//头像路径
+	private String userName = "";	//昵称
+	private String account = "";	//账号
+	private String password = "";	//密码
+	private String realName = "";	//真实姓名
 	private String celphone = "";
 	private String email = "";
 	private Date birth;
 	private Gender gender;
-	private String identityCard = "";	//���֤��
-	private String identityPic = "";	//���֤�ϴ�ͼ�Ĵ洢·��
-	private String bloodType = "";		//Ѫ��
-	private String address = "";		//סַ��ʡ+��+��/��
-	private float height;				//���
-	private float weight;				//����
-	private String urgencyContact = ""; //������ϵ������
-	private String urgencyPhone = "";	//������ϵ�˵绰
-	
-	
+	private String identityCard = "";	//证件照号码
+	private String identityPic = "";	//证件照存储路径
+	private String bloodType = "";		//血型
+	private String address = "";		//住址
+	private float height;				//身高
+	private float weight;				//体重
+	private String urgencyContact = ""; //紧急联系人姓名
+	private String urgencyPhone = "";	//紧急联系人电话
+
+	public int describeContents() {return 0;}
+
+	public void writeToParcel(Parcel out, int flags)
+	{
+		out.writeString(userID);
+	}
+
+	public static final Parcelable.Creator<UserBean> CREATOR = new Parcelable.Creator<UserBean>()
+	{
+		public UserBean createFromParcel(Parcel in)
+		{
+			return new UserBean(in);
+		}
+
+		public UserBean[] newArray(int size)
+		{
+			return new UserBean[size];
+		}
+	};
+
+	public UserBean(){}
+
+	private UserBean(Parcel in)
+	{
+		userID = in.readString();
+		headImgUrl = in.readString();
+		account = in.readString();
+		password = in.readString();
+		realName = in.readString();
+		celphone = in.readString();
+		email = in.readString();
+		identityCard = in.readString();
+		identityPic = in.readString();
+		bloodType = in.readString();
+		address = in.readString();
+		urgencyContact = in.readString();
+		urgencyPhone = in.readString();
+	}
+
+
+
 	public String getEmail()
 	{
 		return email;

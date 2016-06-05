@@ -22,6 +22,7 @@ import com.ikimuhendis.ldrawer.DrawerArrowDrawable;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
+import easyrun.bean.UserBean;
 import easyrun.util.R;
 
 public class MainActivity extends Activity implements View.OnClickListener{
@@ -41,6 +42,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private DrawerArrowDrawable drawerArrow;
     private boolean drawerArrowColor;
 
+    private UserBean user;
+
     /**
      * Called when the activity is first created.
      */
@@ -48,6 +51,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample);
+
+        //接收LoginActivity传来的账号密码,并保存在UserBean中
+        Bundle bundle = getIntent().getExtras();
+        user = new UserBean();
+        user.setAccount(bundle.getString("account"));
+        user.setPassword(bundle.getString("password"));
 
         ActionBar ab = getActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
@@ -221,12 +230,22 @@ public class MainActivity extends Activity implements View.OnClickListener{
     public void onClick(View view) {
 
         if (view == itemHome){
-            changeFragment(new HomeFragment());
+            HomeFragment homeFragment = new HomeFragment();
+            //传递用户信息
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("userInfo",user);
+            homeFragment.setArguments(bundle);
+            changeFragment(homeFragment);
         }else if (view == itemSettings){
             changeFragment(new SettingsFragment());
         }else if (view == user_upload_pic){
             changeFragment(new UserUploadPicFragment());
         }else if (view == find_Picture){
+            FindPictureFragment findPictureFragment = new FindPictureFragment();
+            //传递用户信息
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("userInfo",user);
+            findPictureFragment.setArguments(bundle);
             changeFragment(new FindPictureFragment());
         }else if (view == shopping){
             changeFragment(new ShoppingFragment());
