@@ -246,7 +246,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             Bundle bundle = new Bundle();
             bundle.putParcelable("userInfo",user);
             findPictureFragment.setArguments(bundle);
-            changeFragment(new FindPictureFragment());
+            changeFragment(findPictureFragment);
         }else if (view == shopping){
             changeFragment(new ShoppingFragment());
         }else if (view == marathon_register){

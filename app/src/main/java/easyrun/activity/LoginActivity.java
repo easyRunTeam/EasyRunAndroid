@@ -30,8 +30,6 @@ public class LoginActivity extends Activity{
     private TextView newUser;
     private ProgressDialog dialog;// 创建等待框
 
-    public static final int SEND_NULL=0x122;
-
 
     Handler handler=new Handler(){
         public void handleMessage(Message msg) {
@@ -42,7 +40,7 @@ public class LoginActivity extends Activity{
                 case SendDateToServer.SEND_FAIL:
                     Toast.makeText(LoginActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
                     break;
-                case SEND_NULL:
+                case SendDateToServer.SEND_NULL:
                     Toast.makeText(LoginActivity.this, "用户名或密码不能为空", Toast.LENGTH_SHORT).show();
                 default:
                     break;
@@ -101,7 +99,7 @@ public class LoginActivity extends Activity{
                             String passwd = password.getText().toString();//密码
                             final String path= ServerData.BaseURL+"LoginServer";
                             if (username.equals("")||passwd.equals("")) {
-                                handler.sendEmptyMessage(SEND_NULL);
+                                handler.sendEmptyMessage(SendDateToServer.SEND_NULL);
                             }else{
                                 Map<String, String> map = new HashMap<String, String>();
                                 map.put("account",username);

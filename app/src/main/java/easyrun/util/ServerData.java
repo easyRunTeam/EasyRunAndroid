@@ -9,7 +9,7 @@ import android.net.ConnectivityManager;
  */
 public class ServerData {
     /*public static String BaseURL = "http://120.27.106.188/easyRunServer/";*/
-    public static String BaseURL = "http://120.27.106.188/easyRunServer/";
+    public static String BaseURL = "http://15064r19x0.imwork.net/EasyRunServer/";
 
     public static boolean checkNetwork(Activity activity) {// 检测网络
         ConnectivityManager connManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);

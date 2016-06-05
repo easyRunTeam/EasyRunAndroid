@@ -105,7 +105,7 @@ public class SendDateToServer {
                 is.close();// 释放资源
                 byteos.close();
                 result = new String(byteos.toByteArray());// 返回字符串
-                System.out.println("\n**********" + result + "************\n");
+                System.out.println("\n" + result + "\n");
             }else{
                 handler.sendEmptyMessage(SEND_FAIL);
             }

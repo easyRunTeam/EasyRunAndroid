@@ -1,7 +1,6 @@
 package easyrun.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.beardedhen.androidbootstrap.BootstrapCircleThumbnail;
 import com.ramotion.foldingcell.FoldingCell;
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
+
 import easyrun.bean.FreePicBean;
 import easyrun.util.R;
 import easyrun.util.Tools;
@@ -20,7 +20,7 @@ public class PictureListAdapter extends ArrayAdapter<FreePicBean> {
 
     private HashSet<Integer> unfoldedIndexes = new HashSet<>();
 
-    public PictureListAdapter(Context context, ArrayList<FreePicBean> objects) {
+    public PictureListAdapter(Context context, List<FreePicBean> objects) {
         super(context, 0, objects);
     }
 

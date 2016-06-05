@@ -1,17 +1,20 @@
 package easyrun.bean;
 
-public class FreePicBean	//免费照片Bean
+public class FreePicBean
 {
-	private int eventID = -1;
-	private String userID = "";
-	private String picID = "";
-	private int downloadCnt = 0;	//下载次数
-	private long upTime = -1;
-	private String userName = "";	//用户昵称
-	private String eventName = "";	//赛事名
-	private String headImgUrl =""; //上传该照片的用户头像链接
-	
-	public int getEventID() {return eventID; }
+	private int eventID = 0;
+	private String userID = "0";
+	private String picID = "0";
+	private int downloadCnt = 0;
+	private long upTime = 0;
+	private String userName = "0";
+	private String eventName = "0";
+	private String headImgUrl ="0"; // 用户头像链接
+
+	public int getEventID()
+	{
+		return eventID;
+	}
 
 	public void setEventID(int eventID)
 	{
@@ -72,11 +75,14 @@ public class FreePicBean	//免费照片Bean
 		this.headImgUrl = headImgUrl;
 	}
 
-	public void setUserID(String userID){
-		this.userID = userID;
-	}
-
 	public String getUserID() {
 		return userID;
 	}
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+
+
+
 }
