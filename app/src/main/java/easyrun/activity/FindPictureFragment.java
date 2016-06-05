@@ -48,7 +48,7 @@ public class FindPictureFragment extends Fragment {
         freePic.setUpTime(3661000l);
         freePic.setUserName("葛丛丛");
         int i=0;
-        while(i<8){
+        while(i<7){
             pictureList.add(freePic);
             i++;
         }
